@@ -26,7 +26,10 @@
     {{- $hljs := resources.Get "js/highlight.js" -}}
     <script src="{{ $hljs.RelPermalink }}"></script>
     {{ with .Site.Params.highlightjsLang }}{{ range . }}<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/{{ . }}.min.js"></script>{{ end }}{{ end }}
-    <script>hljs.highlightAll();</script>
+    <script>
+      hljs.configure({ ignoreUnescapedHTML: true }); // Disable UnescapedHTML warning. ref: https://github.com/highlightjs/highlight.js/wiki/security
+      hljs.highlightAll();
+    </script>
   {{- end -}}
   {{- range .Site.Params.jsFiles -}}
     {{- $jsSlice := slice -}}
