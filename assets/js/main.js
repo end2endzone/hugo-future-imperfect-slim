@@ -15,7 +15,7 @@ $.each(toggles, function(toggle, menu) {
       $("#wrapper").addClass("overlay");
       $(".menu").not($(menu + ".menu")).removeClass("active");
       $(menu).addClass("active");
-      if (menu == "#search-input") {$("#search-results").toggleClass("active");}
+      if (menu === "#search-input") {$("#search-results").toggleClass("active");}
     }
   });
 });
@@ -44,32 +44,32 @@ $('#back-to-top').click(function() {
 });
 
 // Search
-var idx = null;         // Lunr index
-var resultDetails = []; // Will hold the data for the search results (titles and summaries)
-var $searchResults;     // The element on the page holding search results
-var $searchInput;       // The search box element
+let idx = null;         // Lunr index
+let resultDetails = []; // Will hold the data for the search results (titles and summaries)
+let $searchResults;     // The element on the page holding search results
+let $searchInput;       // The search box element
 
 window.onload = function () {
   // Set up for an Ajax call to request the JSON data file that is created by
   // Hugo's build process, with the template we added above
-  var request = new XMLHttpRequest();
-  var query = '';
+  let request = new XMLHttpRequest();
+  let query = '';
 
   // Get dom objects for the elements we'll be interacting with
   $searchResults = document.getElementById('search-results');
   $searchInput   = document.getElementById('search-input');
 
-  var lang = document.documentElement.lang;
-  var pathArgs = ["{{ replaceRE "/$" "" .Site.BaseURL }}", "index.json"];
-  if (lang != "{{ .Site.Language }}") {
+  const lang = document.documentElement.lang;
+  let pathArgs = ["{{ absURL "/" }}", "index.json"];
+  if (lang !== "{{ site.Language }}") {
     pathArgs.splice(1, 0, lang);
   }
-  path = pathArgs.join("/");
+  let path = pathArgs.join("/");
   request.open("GET", path, true); // Request the JSON file created during build
   request.onload = function() {
     if (request.status >= 200 && request.status < 400) {
       // Success response received in requesting the index.json file
-      var documents = JSON.parse(request.responseText);
+      let documents = JSON.parse(request.responseText);
 
       // Build the index so Lunr can search it.  The `ref` field will hold the URL
       // to the page/post.  title, excerpt, and body will be fields searched.
@@ -109,14 +109,14 @@ window.onload = function () {
 
 function registerSearchHandler() {
   $searchInput.oninput = function(event) {
-    var query = event.target.value;
-    var results = search(query);  // Perform the search
+    let query = event.target.value;
+    let results = search(query);  // Perform the search
 
     // Render search results
     renderSearchResults(results);
 
     // Remove search results if the user empties the search phrase input field
-    if ($searchInput.value == '') {
+    if ($searchInput.value === '') {
       $searchResults.innerHTML = '';
     }
   }
@@ -124,7 +124,7 @@ function registerSearchHandler() {
 
 function renderSearchResults(results) {
   // Create a list of results
-  var container = document.createElement('div');
+  let container = document.createElement('div');
   if (results.length > 0) {
     results.forEach(function(result) {
       // Create result item
