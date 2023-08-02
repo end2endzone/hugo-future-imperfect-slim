@@ -6,7 +6,7 @@
   {{- template "_internal/twitter_cards.html" . -}}
   {{- template "_internal/google_news.html" . -}}
   {{- if .Site.Params.enableCDN -}}
-    {{- if .Site.Params.highlightjs -}}<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/{{ .Site.Params.highlightjsTheme | default "default" }}.min.css">{{- end -}
+    {{- if .Site.Params.highlightjs -}}<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/{{ .Site.Params.highlightjsTheme | default "default" }}.min.css">{{- end -}}
     {{- range .Site.Params.cssFiles -}}
       {{- if eq . "default" -}}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
@@ -21,7 +21,7 @@
           {{- $rtl := resources.Get "css/rtl.css" | minify -}}
           <link rel="stylesheet" href="{{ $rtl.RelPermalink }}">
         {{- end -}}
-        <link rel="stylesheet" href="{{ "/static/css/add-on.css" | relURL }}">
+        <link rel="stylesheet" href="{{ "css/add-on.css" | relURL }}">
       {{- else }}
         <link rel="stylesheet" href="{{ . | relURL }}">
       {{- end -}}
@@ -48,7 +48,7 @@
           {{- $rtl := resources.Get "css/rtl.css" | minify -}}
           <link rel="stylesheet" href="{{ $rtl.RelPermalink }}">
         {{- end -}}
-        <link rel="stylesheet" href="{{ "/static/css/add-on.css" | relURL }}">
+        <link rel="stylesheet" href="{{ "css/add-on.css" | relURL }}">
       {{- else }}
         <link rel="stylesheet" href="{{ . | relURL }}">
       {{- end -}}
