@@ -6,9 +6,12 @@ title                   = "Hugo Future Imperfect Slim"
 theme                   = "hugo-future-imperfect-slim"
 paginate                = 3
 disqusShortname         = ""
-googleAnalytics         = ""
 pluralizeListTitles     = false
 disableLanguages        = []
+
+[services]
+[services.googleAnalytics]
+id = ""
 
 [markup.goldmark.renderer]
   unsafe                = true
