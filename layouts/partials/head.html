@@ -28,14 +28,16 @@
         {{- $cssSlice := slice -}}
         {{- if $.Site.Params.highlightjs -}}
           {{ with $.Site.Params.highlightjsTheme }}
-            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/{{ . }}.min.css">
+            <link rel="stylesheet" href="/css/{{ . }}.min.css">
           {{ else }}
             {{- $cssSlice = $cssSlice | append (resources.Get "css/default.css") -}}
           {{ end }}
         {{- end -}}
         {{- $assets := resources.Get "assets.json" | unmarshal -}}
         {{- range $assets.styles -}}
+          {{- if ne . "css/fonts.css" -}}
           {{- $cssSlice = $cssSlice | append (resources.Get . ) -}}
+          {{- end -}}
         {{- end -}}
         {{- $cssSlice = $cssSlice | append (resources.Get "scss/main.scss" | toCSS) -}}
         {{- $css := $cssSlice | resources.Concat "css/bundle.css" | minify | fingerprint -}}
@@ -54,7 +56,5 @@
   {{- .Scratch.Set "Title" .Title -}}
   {{- if .Params.Author -}}
     {{- .Scratch.Set "Author" .Params.Author -}}
-  {{- else -}}
-    {{- .Scratch.Set "Author" .Author -}}
   {{ end }}
 </head>

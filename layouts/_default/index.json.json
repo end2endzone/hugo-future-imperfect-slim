@@ -2,8 +2,22 @@
   {{- if $index -}}, {{- end -}}
     {
     "title": "{{ .Title | plainify }}",
-    "date": "{{ .Render "date" }}",
-    "description": "{{ .Params.description | plainify }}",
+    "date": "{{ .Date |time.Format ":date_medium" }}",
+    {{- print "\n    " -}}
+    {{- if .Params.description -}}
+      "description": "{{ .Params.description | plainify }}",
+    {{- else -}}
+      "description": {{ .Content | plainify | truncate 120 | jsonify }},
+    {{- end -}}
+    {{- if .Params.Categories -}}
+      {{- print "\n    " -}}
+      "categories": {{ .Params.Categories | jsonify }},
+    {{- end -}}
+    {{- if .Params.Tags -}}
+      {{- print "\n    " -}}
+      "tags": {{ .Params.Tags | jsonify }},
+    {{- end -}}
+    {{- print "\n    " -}}
     "body": {{ .Content | plainify | jsonify }},
     "ref": "{{ .RelPermalink | plainify }}"
   }

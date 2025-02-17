@@ -11,6 +11,14 @@
   <h2>{{ i18n "404_pagenotfound" | safeHTML }}</h2>
   <p>{{ i18n "404_sorry" | safeHTML }}</p>
   <a href="javascript:history.back()">{{ i18n "404_back" | safeHTML }}</a>
+<script>
+/* (WP) /category/boo => /categories/boo */
+/* (WP) /tag/boo      => /tags/boo       */
+if (location.pathname.match(/^\/category\//))
+  location.href = location.pathname.replace(/^\/category\//, '/categories/')
+if (location.pathname.match(/^\/tag\//))
+  location.href = location.pathname.replace(/^\/tag\//, '/tags/')
+</script>
 </body>
 </html>
 <!-- IE needs 512+ bytes: https://blogs.msdn.microsoft.com/ieinternals/2010/08/18/friendly-http-error-pages/ -->

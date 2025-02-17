@@ -17,7 +17,14 @@
     <meta property="og:image:alt" content="{{ .alt }}">
   {{- end -}}
 {{ else }}
-  <meta property="og:image" content="{{ .Site.Params.intro.pic.src | absURL }}">
+  {{ if .Params.featured }}
+    {{- $feat := (cond (eq "https://" (substr .Params.featured 0 8)) (.Params.featured) ((path.Join "post" (.Page.Date.Format "2006") "img" .Params.featured) | relURL)) -}}
+    <meta itemprop="image"     content="{{ $feat }}">
+    <meta property="og:image"  content="{{ $feat }}">
+    <meta name="twitter:image" content="{{ $feat }}">
+  {{ else }}
+    <meta property="og:image" content="{{ .Site.Params.intro.pic.src | absURL }}">
+  {{ end }}
 {{ end }}
 
 {{ if .Site.Params.meta.favicon }}

@@ -1,10 +1,12 @@
 {{ define "main" }}
   <article>
-    <div class="post">
+    <div class="post single">
       {{ .Render "header" }}
+      {{ if eq .Type "post"}}
       <div id="socnet-share">
         {{ partial "share-buttons" . }}
       </div>
+      {{ end }}
       <div class="content">
         {{ .Render "featured" }}
         {{ if and (gt .WordCount .Site.Params.tocWords) ( .Site.Params.toc ) }}
@@ -13,13 +15,18 @@
         {{ .Content }}
       </div>
       <footer>
+        {{ if eq .Type "post"}}
         {{ .Render "stats" }}
+        {{ end }}
       </footer>
     </div>
+    {{ if eq .Type "post"}}
     {{ if not ( eq .Params.comments false) }}
       {{ .Render "comments" }}
     {{ end }}
+    {{ end }}
   </article>
+  {{ if eq .Type "post"}}
   <div class="pagination">
     {{ if .NextInSection }}
       <a href="{{ .NextInSection.RelPermalink }}" class="button left"><span>{{ .NextInSection.Title }}</span></a>
@@ -28,4 +35,5 @@
       <a href="{{ .PrevInSection.RelPermalink }}" class="button right"><span>{{ .PrevInSection.Title }}</span></a>
     {{ end }}
   </div>
+  {{ end }}
 {{ end }}

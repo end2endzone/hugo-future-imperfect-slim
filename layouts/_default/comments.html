@@ -1,9 +1,4 @@
-{{ if .Site.DisqusShortname }}
-  <div class='post'>
-    {{ template "_internal/disqus.html" . }}
-  </div>
-
-{{ else if .Site.Params.utterances.enabled }}
+{{ if .Site.Params.utterances.enabled }}
   <script src='https://utteranc.es/client.js'
           repo='{{ .Site.Params.utterances.repo }}'
           issue-term='{{ .Site.Params.utterances.issueTerm }}'
@@ -91,7 +86,7 @@
                             {{- end -}}
                           </h3>
                           <a class='comment-date' href='#{{ ._id }}' title='Permalink to this comment'>
-                            <time datetime='{{ .date }}'>{{ dateFormat "02 Jan 06 15:04" .date }}</time>
+                            <time datetime='{{ .date }}'>{{ dateFormat "02 Jan 2006" .date }}</time>
                           </a>
                         </div>
                         <!-- TODO: Assess Value (ref ln#73): <a href='#{{ .replyID }}' class='reply-target'>{{ .replyName }}</a> -->
