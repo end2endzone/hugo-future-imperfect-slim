@@ -18,7 +18,7 @@
   {{- end -}}
 {{ else }}
   {{ if .Params.featured }}
-    {{- $feat := (cond (eq "https://" (substr .Params.featured 0 8)) (.Params.featured) ((path.Join "post" (.Page.Date.Format "2006") "img" .Params.featured) | relURL)) -}}
+    {{- $feat := (cond (eq "https://" (substr .Params.featured 0 8)) (.Params.featured) ((path.Join "img" .Params.featured) | relURL)) -}}
     <meta itemprop="image"     content="{{ $feat }}">
     <meta property="og:image"  content="{{ $feat }}">
     <meta name="twitter:image" content="{{ $feat }}">
