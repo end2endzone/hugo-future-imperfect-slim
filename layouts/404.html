@@ -2,15 +2,15 @@
 <html lang="{{ .Page.Language | default "en" }}">
 <head>
   <meta charset="utf-8">
-  <title>{{ i18n "404_pagenotfound" }}</title>
+  <title>Page Not Found</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="{{ "css/404.css" | relURL }}">
 </head>
 <body>
   <h1>404</h1>
-  <h2>{{ i18n "404_pagenotfound" | safeHTML }}</h2>
-  <p>{{ i18n "404_sorry" | safeHTML }}</p>
-  <a href="javascript:history.back()">{{ i18n "404_back" | safeHTML }}</a>
+  <h2>Page Not Found</h2>
+  <p>Sorry, but the page you were trying to view does not exist.</p>
+  <a href="javascript:history.back()">Go Back</a>
 <script>
 /* (WP) /category/boo => /categories/boo */
 /* (WP) /tag/boo      => /tags/boo       */

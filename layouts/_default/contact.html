@@ -2,7 +2,7 @@
   <article class="post">
     <header>
       <div class="title">
-        <h1><a href="{{ .RelPermalink }}">{{ i18n "contact" }}</a></h1>
+        <h1><a href="{{ .RelPermalink }}">Contact</a></h1>
         {{ with .Description }}<p>{{ . }}</p>{{ end }}
       </div>
     </header>
@@ -14,25 +14,25 @@
           {{ else }}
             <form id="contact" action="{{ .Params.emailService }}" method="post" center width="300px">
           {{ end }}
-          <h4>{{ i18n "contact_replies" .Params.contactanswertime }}</h4>
+          <h4>Replies typically within {{ .Params.contactanswertime }} hours.</h4>
           <fieldset>
-            <input placeholder="{{ i18n "form_name" }}" type="text" name="name" tabindex="1" required autofocus>
+            <input placeholder="Your Name" type="text" name="name" tabindex="1" required autofocus>
           </fieldset>
           <fieldset>
-            <input placeholder="{{ i18n "form_email" }}" type="email" name="_replyto" tabindex="2" required>
+            <input placeholder="Your Email" type="email" name="_replyto" tabindex="2" required>
           </fieldset>
           <fieldset>
-            <input placeholder="{{ i18n "form_subject" }}" type="text" name="_subject" tabindex="3" required>
+            <input placeholder="Your Subject" type="text" name="_subject" tabindex="3" required>
           </fieldset>
           <fieldset>
-            <textarea placeholder="{{ i18n "form_body" }}" type="text" name="message" tabindex="4" required></textarea>
+            <textarea placeholder="Your Message" type="text" name="message" tabindex="4" required></textarea>
           </fieldset>
           <fieldset>
             <input type="hidden" name="_language" value="{{ .Lang }}">
           </fieldset>
           <fieldset>
             <div data-netlify-recaptcha="true"></div>
-            <button name="submit" class="button" type="submit" id="contact-submit" tabindex="5">{{ i18n "submit" }}</button>
+            <button name="submit" class="button" type="submit" id="contact-submit" tabindex="5">Submit</button>
           </fieldset>
         </form>
       </div>

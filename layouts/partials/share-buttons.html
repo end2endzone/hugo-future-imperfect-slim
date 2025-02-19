@@ -29,7 +29,7 @@
           <p>VK</p>
         </a>
   {{ else if eq . "email" }}
-        <a href="mailto:?subject={{ i18n "check_out" }} {{ $author }}&amp;body={{ $permalink }}" target="_blank" class="nav share-btn email" data-proofer-ignore>
+        <a href="mailto:?subject=Check out this post by {{ $author }}&amp;body={{ $permalink }}" target="_blank" class="nav share-btn email" data-proofer-ignore>
           <p>Email</p>
         </a>
   {{ end }}

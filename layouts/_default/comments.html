@@ -16,7 +16,7 @@
     {{- $entryId := .File.UniqueID -}}
     {{/* Additional div wrapper for proper consistent margin */}}
     <div>
-      <h2 id='say-something'>{{ i18n "say_something" }}</h2>
+      <h2 id='say-something'>Say Something</h2>
         <form id='comment-form' class='new-comment' method='POST'>
           {{/* Display reply target */}}
           <h3 class='reply-notice hidden'>
@@ -31,10 +31,10 @@
           <input type='hidden' name='fields[replyName]' value=''>
 
           {{/* User input fields */}}
-          <input required name='fields[name]' type='text' placeholder='{{ i18n "form_name" }}'>
-          <input name='fields[website]' type='text' placeholder='{{ i18n "form_website" }}'>
-          <input required name='fields[email]' type='email' placeholder='{{ i18n "form_email" }}'>
-          <textarea required name='fields[body]' placeholder='{{ i18n "form_body" }}' rows='10'></textarea>
+          <input required name='fields[name]' type='text' placeholder='Your Name'>
+          <input name='fields[website]' type='text' placeholder='Your Website'>
+          <input required name='fields[email]' type='email' placeholder='Your Email'>
+          <textarea required name='fields[body]' placeholder='Your Message' rows='10'></textarea>
 
           {{/* reCAPTHCA v2 */}}
           {{ if and .Site.Params.staticman.recaptcha.siteKey .Site.Params.staticman.recaptcha.encryptedKey }}
@@ -47,26 +47,26 @@
 
           {{/* Start comment form alert messaging */}}
           <div class='submit-notice'>
-            <strong class='submit-notice-text submit-success hidden'>{{ i18n "success_msg" }}</strong>
-            <strong class='submit-notice-text submit-failed hidden'>{{ i18n "error_msg" }}</strong>
+            <strong class='submit-notice-text submit-success hidden'>Thanks for your comment! It will be shown on the site once it has been approved.</strong>
+            <strong class='submit-notice-text submit-failed hidden'>Sorry, there was an error with your submission. Please make sure all required fields have been completed and try again.</strong>
           </div>
 
           {{/* Form buttons */}}
-          <button type='button' id="comment-form-submit" class='button'>{{ i18n "submit" }}</button>
-          <button type='button' id="comment-form-submitted" class='hidden button' disabled>{{ i18n "submitted" }}</button>
-          <button type='reset' id="comment-form-reset" class='button'>{{ i18n "reset" }}</button>
+          <button type='button' id="comment-form-submit" class='button'>Submit</button>
+          <button type='button' id="comment-form-submitted" class='hidden button' disabled>Submitted</button>
+          <button type='reset' id="comment-form-reset" class='button'>Reset</button>
         </form>
     </div>
 
     {{/* Additional div wrapper for proper consistent margin */}}
     <div class='comments-container'>
-      <h2>{{ i18n "comments" }}</h2>
+      <h2>Comments</h2>
 
       {{- if .Site.Data.comments -}}
         {{/* $comments collects comment files for the current blog entry */}}
         {{- $comments := index $.Site.Data.comments $entryId -}}
         {{- if not $comments -}}
-          <p>{{ i18n "nothing_yet" }}</p>
+          <p>Nothing yet.</p>
         {{- else -}}
           {{- range $comments -}}
             {{- if not .replyThread -}}
@@ -91,7 +91,7 @@
                         </div>
                         <!-- TODO: Assess Value (ref ln#73): <a href='#{{ .replyID }}' class='reply-target'>{{ .replyName }}</a> -->
                         <!-- TODO: Assess Value: <span class ="comment-threadID hidden">{{ .replyThread }}</span> -->
-                        <a class='comment-reply-btn' href='#say-something'>{{ i18n "reply" }}</a>
+                        <a class='comment-reply-btn' href='#say-something'>Reply</a>
                       </div>
                     </header>
                     <div class='comment-content'>
