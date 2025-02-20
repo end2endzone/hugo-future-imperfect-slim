@@ -11,7 +11,7 @@
         {{ if or .IsHome (not .Site.Params.header.dynamicTitles) }}
           {{ .Site.Params.header.navbarTitle  | safeHTML }}
         {{ else }}
-          {{ i18n .Section | default .Title }}
+          {{ .Section | default .Title }}
         {{ end }}
       </a>
     </h1>

@@ -1,7 +1,7 @@
 {{ define "main" }}
   <ul class="posts">
     <header>
-      <h1>{{ i18n .Data.Plural }}</h1>
+      <h1>{{ .Data.Plural }}</h1>
     </header>
     {{ range .Data.Terms.ByCount }}
       <li>
