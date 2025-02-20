@@ -12,8 +12,9 @@
 {{/* Backwards compatibility for deprecated parameter ".Site.Params.staticman.staticman" */}}
 {{ else if or .Site.Params.staticman.enabled .Site.Params.staticman.staticman }}
   <div class='post'>
-    {{/* $entryId stores the transformed current path for sorting Staticman data file */}}
-    {{- $entryId := .File.UniqueID -}}
+    {{/* $entryId stores the current path for storing Staticman data files */}}
+    {{/* https://gohugo.io/methods/page/file/ */}}
+    {{- $entryId := .File.Dir | path.Clean -}}
     {{/* Additional div wrapper for proper consistent margin */}}
     <div>
       <h2 id='say-something'>Say Something</h2>
