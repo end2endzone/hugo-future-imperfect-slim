@@ -6,7 +6,7 @@
     <div id="wrapper">
       {{ partial "site-intro" . }}
       <main id="site-main">
-        {{ if .IsHome }}
+        {{ if and .IsHome ( eq .Paginator.PageNumber 1 ) }}
           <!-- tracey ADDED, since theme missing per https://gohugo.io/templates/homepage/ -->
           <!-- colordiff themes/hugo-future-imperfect-slim/layouts/_default/list.html layouts/_default/home.html -->
           <div class="homepage-content">
