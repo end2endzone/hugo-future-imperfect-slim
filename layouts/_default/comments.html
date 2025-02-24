@@ -81,7 +81,9 @@
                         <div class='comment-author-container'>
                           <h3 class='comment-author'>
                             {{- if .website -}}
-                              <a rel='external nofollow' href='{{ .website }}'>{{ .name }}</a>
+                              <a rel='external nofollow' href='{{
+cond (eq "https://" (substr .website 0 8)) .website (cond (eq "http://" (substr .website 0 7)) .website (path.Join "https://" .website))
+                              }}'>{{ .name }}</a>
                             {{- else -}}
                               {{- .name -}}
                             {{- end -}}
