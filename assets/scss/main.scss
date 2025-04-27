@@ -1242,6 +1242,15 @@ figcaption {
   }
 }
 
+#site-banner {
+  grid-area: banner;
+  padding: .25em 1em 0 1em;
+  @include display-flex;
+  justify-content: center;
+  margin: auto;
+  max-width: 1440px;
+}
+
 #site-intro {
   grid-area: intro;
   align-items: center;
@@ -1377,6 +1386,7 @@ figcaption {
   display: -ms-grid;
   display: grid;
   grid-template-areas:
+    "banner"
     "intro"
     "main"
     "sidebar"
@@ -1388,6 +1398,7 @@ figcaption {
   transition: opacity $hover-slow;
   @include for-desktop-up {
     grid-template-areas:
+      "banner banner"
       "intro main"
       "sidebar main"
       "footer main"

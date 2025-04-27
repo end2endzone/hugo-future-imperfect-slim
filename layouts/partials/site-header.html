@@ -42,3 +42,11 @@
     </menu>
   {{ end }}
 </header>
+
+{{ if .Site.Params.banner }}
+  {{ if and .IsHome ( eq .Paginator.PageNumber 1 ) }}
+    <section id="site-banner">
+      {{ .Site.Params.banner | safeHTML }}
+    </section>
+  {{ end }}
+{{ end }}
