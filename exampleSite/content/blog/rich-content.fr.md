@@ -35,7 +35,7 @@ See https://github.com/gohugoio/hugo/issues/7866
 
 ## Twitter Shortcode Simple
 
-{{< x 1085870671291310081 >}}
+{{< x user="SanDiegoZoo" id="1453110110599868418" >}}
 
 <br>
 
@@ -43,4 +43,4 @@ See https://github.com/gohugoio/hugo/issues/7866
 
 ## Vimeo Shortcode Simple
 
-{{< x 48912912 >}}
+{{< vimeo_simple 48912912 >}}
