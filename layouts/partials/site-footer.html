@@ -6,7 +6,7 @@
       </ul>
   {{ end }}
   <p class="copyright">
-    {{ (.Site.Copyright | safeHTML) | default (print "\u00A9 " (.Lastmod | time.Format ":2006") " " (.Site.Params.owner  | default .Site.Title)) }}
+    {{ (.Site.Copyright | safeHTML) | default (print "\u00A9 " .Site.Lastmod.Year " " (.Site.Params.author | default .Site.Title)) }}
       <br>
     {{ i18n "attribution" . | safeHTML }}
   </p>
