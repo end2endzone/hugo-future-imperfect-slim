@@ -1,0 +1,22 @@
+/*
+The following overrides hugo-future-imperfect-slim default table CSS code.
+See file theme/hugo-future-imperfect-slim/assets/scss/main.scss about tables around line 466.
+The overrides are required so that code highlighting from highlightjs-line-numbers.js
+is working as expected.
+*/
+pre code table {
+  background-color: transparent;
+}
+pre code table tbody tr {
+  border-bottom: none;
+  text-align: left;
+}
+pre code table tbody tr:nth-child(even),
+pre code table tbody tr:nth-child(odd),
+pre code table tbody tr:hover {
+  background-color: transparent;
+}
+pre code table tbody tr td:first-child,
+pre code table tbody tr td:not(:first-child) {
+  text-align: left;
+}

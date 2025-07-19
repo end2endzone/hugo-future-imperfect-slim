@@ -1,10 +1,12 @@
 {{- if .Site.Params.enableCDN -}}
   {{- if .Site.Params.highlightjs -}}
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.9.0/highlightjs-line-numbers.min.js"></script>
     {{ with .Site.Params.highlightjsLang }}{{ range . }}<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/{{ . }}.min.js"></script>{{ end }}{{ end }}
     <script>
       hljs.configure({ ignoreUnescapedHTML: true }); // Disable UnescapedHTML warning. ref: https://github.com/highlightjs/highlight.js/wiki/security
       hljs.highlightAll();
+      hljs.initLineNumbersOnLoad();
     </script>
   {{- end -}}
   {{- range .Site.Params.jsFiles -}}
@@ -29,9 +31,11 @@
     {{- $hljs := resources.Get "js/highlight.js" -}}
     <script src="{{ $hljs.RelPermalink }}"></script>
     {{ with .Site.Params.highlightjsLang }}{{ range . }}<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/{{ . }}.min.js"></script>{{ end }}{{ end }}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.9.0/highlightjs-line-numbers.min.js"></script>
     <script>
       hljs.configure({ ignoreUnescapedHTML: true }); // Disable UnescapedHTML warning. ref: https://github.com/highlightjs/highlight.js/wiki/security
       hljs.highlightAll();
+      hljs.initLineNumbersOnLoad();
     </script>
   {{- end -}}
   {{- range .Site.Params.jsFiles -}}
