@@ -28,7 +28,7 @@
         {{- $cssSlice := slice -}}
         {{- if $.Site.Params.highlightjs -}}
           {{ with $.Site.Params.highlightjsTheme }}
-            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/{{ . }}.min.css">
+            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/{{ . }}.min.css">
           {{ else }}
             {{- $cssSlice = $cssSlice | append (resources.Get "css/default.css") -}}
           {{ end }}
