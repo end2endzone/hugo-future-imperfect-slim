@@ -6,6 +6,8 @@ is working as expected.
 */
 pre code table {
   background-color: transparent;
+  margin: 5px;
+  box-shadow: none;
 }
 pre code table tbody tr {
   border-bottom: none;
@@ -19,4 +21,11 @@ pre code table tbody tr:hover {
 pre code table tbody tr td:first-child,
 pre code table tbody tr td:not(:first-child) {
   text-align: left;
+}
+
+
+/* Limit pre code fences (highlight) to 90% as per tables in this theme */
+div.content pre {
+  width: 90%; /* Set width to match tables */
+  margin: 1em auto;
 }
